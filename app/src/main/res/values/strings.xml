@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">RetireAqui</string>
+    <string name="app_name">RetireAqui!</string>
+    <string name="login_title">Faça seu login</string>
+    <string name="login_desc">Tenha acesso a sua lista de produtos para retirada.</string>
+    <string name="login_email">email</string>
+    <string name="login_email_value">Digite seu email</string>
+    <string name="login_password">senha</string>
+    <string name="login_password_value">Digite sua senha</string>
+    <string name="login_button">Login</string>
+    <string name="login_button_legend">Não possui uma conta?</string>
+    <string name="login_button_legend_link">Cadastre-se grátis!</string>
 </resources>
