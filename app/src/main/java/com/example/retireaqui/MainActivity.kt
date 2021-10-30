@@ -13,5 +13,15 @@ class MainActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+
+        onClickLoginButton ()
+    }
+
+    private fun onClickLoginButton (){
+        val btnNavigationRegister: Button = findViewById(R.id.login_button)
+        btnNavigationRegister.setOnClickListener{
+            val activity_register = Intent(this, RegisterActivity::class.java)
+            startActivity(activity_register)
+        }
     }
 }
