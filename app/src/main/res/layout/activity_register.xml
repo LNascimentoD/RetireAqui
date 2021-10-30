@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_figma"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <LinearLayout
         android:layout_width="342dp"
@@ -13,36 +13,37 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496">
+        app:layout_constraintVertical_bias="0.493">
 
         <TextView
-            android:id="@+id/login_title"
+            android:id="@+id/register_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/login_title"
+            android:text="@string/register_title"
             android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/login_desc"
+            android:id="@+id/register_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="@string/login_desc"
+            android:text="@string/register_desc"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/login_name"
+            android:id="@+id/register_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             android:paddingBottom="8dp"
-            android:text="@string/login_email"
+            android:text="@string/register_name"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -55,7 +56,28 @@
             android:fontFamily="@font/poppins"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
-            android:text="@string/login_email_value"
+            android:text="@string/register_name_value"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="@string/register_email"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/register_email_value"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/my_bg"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:text="@string/register_email_value"
             android:textColor="@color/white" />
 
         <TextView
@@ -64,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
-            android:text="@string/login_password"
+            android:text="@string/register_password"
             android:textColor="@color/white" />
 
         <EditText
@@ -76,40 +98,47 @@
             android:fontFamily="@font/poppins"
             android:inputType="textWebEditText|textPassword"
             android:paddingLeft="20dp"
-            android:text="@string/login_password_value"
+            android:text="@string/register_password_value"
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="200dp"
             android:backgroundTint="@color/yellow_figma"
             android:fontFamily="@font/poppins"
-            android:text="@string/login_button"
+            android:text="@string/register_button"
             android:textColor="@color/black_figma"
             app:cornerRadius="10dp" />
 
-        <TextView
-            android:id="@+id/register_button_legend"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins"
             android:gravity="center"
-            android:text="@string/login_button_legend"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/register_button_legend_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:text="@string/login_button_legend_link"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/register_button_legend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/register_button_legend"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/register_button_legend_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="@string/register_button_legend_link"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </LinearLayout>
 
