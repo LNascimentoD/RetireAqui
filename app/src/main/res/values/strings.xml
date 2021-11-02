@@ -9,4 +9,16 @@
     <string name="login_button">Login</string>
     <string name="login_button_legend">Não possui uma conta?</string>
     <string name="login_button_legend_link">Cadastre-se grátis!</string>
+
+    <string name="register_title">Faça seu cadastro</string>
+    <string name="register_desc">Facilitamos a retirada do seu produto.</string>
+    <string name="register_name">nome</string>
+    <string name="register_name_value">Digite seu nome</string>
+    <string name="register_email">email</string>
+    <string name="register_email_value">Digite seu email</string>
+    <string name="register_password">senha</string>
+    <string name="register_password_value">Digite sua senha</string>
+    <string name="register_button">Cadastrar-se</string>
+    <string name="register_button_legend">Já possui conta?</string>
+    <string name="register_button_legend_link">Faça seu login</string>
 </resources>
