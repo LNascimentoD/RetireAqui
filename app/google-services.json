@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "891658979022",
+    "project_id": "mobile-38e6b",
+    "storage_bucket": "mobile-38e6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891658979022:android:c28cbd8a9cd027bf4f329f",
+        "android_client_info": {
+          "package_name": "com.example.retireaqui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891658979022-69oceblcud1h6ubsor4pgoe82j1n5e69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnnMXs4OX-OAqjXuKZpvKWkdo1ALCsZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891658979022-69oceblcud1h6ubsor4pgoe82j1n5e69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891658979022:android:a1f7caa0b3cfe7db4f329f",
+        "android_client_info": {
+          "package_name": "com.retireaqui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891658979022-69oceblcud1h6ubsor4pgoe82j1n5e69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnnMXs4OX-OAqjXuKZpvKWkdo1ALCsZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891658979022-69oceblcud1h6ubsor4pgoe82j1n5e69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
