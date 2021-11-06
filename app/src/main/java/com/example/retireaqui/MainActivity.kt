@@ -9,6 +9,8 @@ import android.view.Window
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import android.widget.Button
+import com.example.retireaqui.network.models.User
+import com.example.retireaqui.network.services.UserService
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
