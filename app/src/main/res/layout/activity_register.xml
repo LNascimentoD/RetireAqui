@@ -54,10 +54,11 @@
             android:background="@drawable/my_bg"
             android:ems="10"
             android:fontFamily="@font/poppins"
+            android:hint="@string/register_name_value"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
-            android:text="@string/register_name_value"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <TextView
             android:id="@+id/register_email"
@@ -75,10 +76,11 @@
             android:background="@drawable/my_bg"
             android:ems="10"
             android:fontFamily="@font/poppins"
+            android:hint="@string/register_email_value"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
-            android:text="@string/register_email_value"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <TextView
             android:id="@+id/register_password"
@@ -96,10 +98,11 @@
             android:background="@drawable/my_bg"
             android:ems="10"
             android:fontFamily="@font/poppins"
+            android:hint="@string/register_password_value"
             android:inputType="textWebEditText|textPassword"
             android:paddingLeft="20dp"
-            android:text="@string/register_password_value"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <Button
             android:id="@+id/register_button"
