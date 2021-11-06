@@ -16,6 +16,8 @@ class RegisterActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
         setContentView(R.layout.activity_register)
+
+        onRegister()
     }
 
     private fun onRegister(){
@@ -23,13 +25,13 @@ class RegisterActivity : AppCompatActivity() {
         val editEmail : EditText = findViewById(R.id.register_email_value)
         val editPassword : EditText = findViewById(R.id.register_password_value)
 
-        val name = editName.getText().toString()
-        val email = editEmail.getText().toString()
-        val password = editPassword.getText().toString()
+        val name = editName.getText()
+        val email = editEmail.getText()
+        val password = editPassword.getText()
 
         val btnOnRegister = findViewById<Button>(R.id.register_button)
         btnOnRegister.setOnClickListener{
-            val user = User(name, email, password)
+            val user = User(name.toString(), email.toString(), password.toString())
             val userService = UserService()
             userService.registerUser(user)
         }
