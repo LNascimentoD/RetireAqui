@@ -3,6 +3,7 @@ package com.example.retireaqui.network.services
 import android.content.ContentValues.TAG
 import android.util.Log
 import com.example.retireaqui.network.models.User
+import com.example.retireaqui.network.providers.HashProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -10,10 +11,12 @@ class UserService {
     val db = Firebase.firestore
 
     public fun registerUser(user: User){
+        val hashProvider = HashProvider()
+
         val user = hashMapOf(
             "name" to user.name,
             "email" to user.email,
-            "password" to user.password,
+            "password" to hashProvider.generateHash(user.password),
             "tipo" to "gerente"
         )
 
