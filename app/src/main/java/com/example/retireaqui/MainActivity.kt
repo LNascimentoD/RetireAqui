@@ -1,16 +1,11 @@
 package com.example.retireaqui
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import android.widget.Button
-import com.example.retireaqui.network.models.User
-import com.example.retireaqui.network.services.UserService
+import android.widget.TextView
+import com.example.retireaqui.views.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +15,14 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
-        onClickLoginButton ()
+        onClickLoginButtonLegendLink ()
     }
 
-    private fun onClickLoginButton (){
-        val btnNavigationRegister: Button = findViewById(R.id.login_button)
+    private fun onClickLoginButtonLegendLink (){
+        val btnNavigationRegister: TextView = findViewById(R.id.login_button_legend_link)
         btnNavigationRegister.setOnClickListener{
-            val activity_register = Intent(this, RegisterActivity::class.java)
-            startActivity(activity_register)
+            val activityRegister = Intent(this, RegisterActivity::class.java)
+            startActivity(activityRegister)
         }
     }
 }

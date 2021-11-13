@@ -1,12 +1,11 @@
-package com.example.retireaqui
+package com.example.retireaqui.views
 
-import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
+import com.example.retireaqui.R
 import com.example.retireaqui.network.models.User
 import com.example.retireaqui.network.services.UserService
 
