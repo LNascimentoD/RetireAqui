@@ -47,7 +47,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/login_name_value"
+            android:id="@+id/login_email_value"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/my_bg"

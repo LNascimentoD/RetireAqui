@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
+import android.widget.EditText
 import android.widget.TextView
+import com.example.retireaqui.network.models.Authentication
 import com.example.retireaqui.views.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +18,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         onClickLoginButtonLegendLink ()
+        onClickLoginButton ()
+    }
+
+    private fun onClickLoginButton (){
+        val btnLogin: TextView = findViewById(R.id.login_button)
+
+        val editEmail : EditText = findViewById(R.id.login_email_value)
+        val editPassword : EditText = findViewById(R.id.login_password_value)
+
+        val email = editEmail.getText()
+        val password = editPassword.getText()
+
+        btnLogin.setOnClickListener{
+            Authentication.login(email.toString(), password.toString())
+        }
     }
 
     private fun onClickLoginButtonLegendLink (){
