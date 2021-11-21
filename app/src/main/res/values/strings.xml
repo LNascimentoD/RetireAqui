@@ -21,4 +21,14 @@
     <string name="register_button">Cadastrar-se</string>
     <string name="register_button_legend">Já possui conta?</string>
     <string name="register_button_legend_link">Faça seu login</string>
+
+    <string name="home_welcome">Olá, </string>
+    <string name="home_userName">Fulano!</string>
+    <string name="home_servicesTitle">Serviços</string>
+    <string name="home_buttonMaps">Mapa</string>
+
+    <string name="homebar_home">Ínicio</string>
+    <string name="homebar_perfil">Perfil</string>
+    <string name="homebar_shopList">Lojas</string>
+    <string name="homebar_chat">Chat</string>
 </resources>
