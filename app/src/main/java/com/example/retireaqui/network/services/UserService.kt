@@ -16,7 +16,7 @@ class UserService {
         val user = hashMapOf(
             "name" to user.name,
             "email" to user.email,
-            "password" to hashProvider.generateHash(user.password),
+            "password" to hashProvider.generateHash(user.name),
             "tipo" to "gerente"
         )
 

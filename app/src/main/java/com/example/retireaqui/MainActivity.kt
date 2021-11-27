@@ -1,18 +1,21 @@
 package com.example.retireaqui
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import android.widget.Button
-import com.example.retireaqui.network.models.User
-import com.example.retireaqui.network.services.UserService
+import android.widget.EditText
+import android.widget.TextView
+import com.example.retireaqui.network.models.Authentication
+import com.example.retireaqui.views.RegisterActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,14 +23,40 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
+        auth = Firebase.auth
+
         onClickLoginButton ()
+        onClickLoginButtonLegendLink ()
+    }
+
+    public override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+
+        }
     }
 
     private fun onClickLoginButton (){
+        val editEmail : EditText = findViewById(R.id.login_email_value)
+        val editPassword : EditText = findViewById(R.id.login_password_value)
+
+        val email = editEmail.getText()
+        val password = editPassword.getText()
+
+
         val btnNavigationRegister: Button = findViewById(R.id.login_button)
         btnNavigationRegister.setOnClickListener{
-            val activity_register = Intent(this, RegisterActivity::class.java)
-            startActivity(activity_register)
+            Authentication.signIn(email.toString(), password.toString())
+        }
+    }
+
+    private fun onClickLoginButtonLegendLink (){
+        val btnNavigationRegister: TextView = findViewById(R.id.login_button_legend_link)
+        btnNavigationRegister.setOnClickListener{
+            val activityRegister = Intent(this, RegisterActivity::class.java)
+            startActivity(activityRegister)
         }
     }
 }
