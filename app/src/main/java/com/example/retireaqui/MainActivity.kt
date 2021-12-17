@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.retireaqui.network.models.Authentication
+import com.example.retireaqui.views.MapActivity
 import com.example.retireaqui.views.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -49,6 +50,9 @@ class MainActivity : AppCompatActivity() {
         val btnNavigationRegister: Button = findViewById(R.id.login_button)
         btnNavigationRegister.setOnClickListener{
             Authentication.signIn(email.toString(), password.toString())
+
+            val activityMap = Intent(this, MapActivity::class.java)
+            startActivity(activityMap)
         }
     }
 
