@@ -11,6 +11,7 @@ import com.google.firebase.ktx.Firebase
 import android.widget.Button
 import com.example.retireaqui.network.models.User
 import com.example.retireaqui.network.services.UserService
+import com.example.retireaqui.views.ListShopActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun onClickLoginButton (){
         val btnNavigationRegister: Button = findViewById(R.id.login_button)
         btnNavigationRegister.setOnClickListener{
-            val activity_register = Intent(this, RegisterActivity::class.java)
+            val activity_register = Intent(this, ListShopActivity::class.java)
             startActivity(activity_register)
         }
     }
