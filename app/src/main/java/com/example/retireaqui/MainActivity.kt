@@ -1,22 +1,22 @@
 package com.example.retireaqui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
-import com.google.firebase.ktx.Firebase
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.retireaqui.network.models.Authentication
 import com.example.retireaqui.views.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        lateinit var auth: FirebaseAuth
         super.onCreate(savedInstanceState)
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
