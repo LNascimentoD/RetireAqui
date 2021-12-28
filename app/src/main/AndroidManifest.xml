@@ -24,6 +24,9 @@
             android:name=".views.MapActivity"
             android:exported="true" />
         <activity
+            android:name=".views.ListShopActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.RegisterActivity"
             android:exported="true" />
         <activity

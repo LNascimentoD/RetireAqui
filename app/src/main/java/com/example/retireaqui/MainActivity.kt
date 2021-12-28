@@ -1,23 +1,28 @@
 package com.example.retireaqui
 
+import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
-import com.google.firebase.ktx.Firebase
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.retireaqui.network.models.Authentication
 import com.example.retireaqui.views.MapActivity
+import com.example.retireaqui.views.ListShopActivity
 import com.example.retireaqui.views.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -49,10 +54,21 @@ class MainActivity : AppCompatActivity() {
 
         val btnNavigationRegister: Button = findViewById(R.id.login_button)
         btnNavigationRegister.setOnClickListener{
+            //Authentication.logout()
+
+            Log.d(ContentValues.TAG, "Deu ruim: " + auth.currentUser)
+
             Authentication.signIn(email.toString(), password.toString())
 
-            val activityMap = Intent(this, MapActivity::class.java)
-            startActivity(activityMap)
+            Log.d(ContentValues.TAG, "Deu Bom: " + auth.currentUser)
+
+            if(auth.currentUser != null){
+                val activityMap = Intent(this, MapActivity::class.java)
+                startActivity(activityMap)
+
+                //val listShopActivity = Intent(this, ListShopActivity::class.java)
+                //startActivity(listShopActivity)
+            }
         }
     }
 

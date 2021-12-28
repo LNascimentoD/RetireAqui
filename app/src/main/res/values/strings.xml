@@ -21,4 +21,13 @@
     <string name="register_button">Cadastrar-se</string>
     <string name="register_button_legend">Já possui conta?</string>
     <string name="register_button_legend_link">Faça seu login</string>
+
+    <string name="list_shop_title">Lojas</string>
+    <string name="list_shop_home">home</string>
+    <string name="list_shop_lojas">lojas</string>
+    <string name="list_shop_chat">chat</string>
+    <string name="list_shop_perfil">perfil</string>
+
+    <string name="list_shop_name">Nome do estabelecimento</string>
+    <string name="list_shop_location">Localização</string>
 </resources>

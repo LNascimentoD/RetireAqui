@@ -3,8 +3,6 @@ package com.example.retireaqui.network.models
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.Toast
-import com.example.retireaqui.network.providers.HashProvider
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
@@ -23,29 +21,28 @@ object Authentication {
 
         val user = User(auth.currentUser?.uid.toString(), name, email, type)
 
-            database.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w(ContentValues.TAG, "Error adding document", e)
-                }
-
+        database.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(ContentValues.TAG, "Error adding document", e)
+            }
     }
 
     fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).
         addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    Log.d(TAG, "signInWithEmail:success")
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                }
+            if (task.isSuccessful) {
+                // Sign in success, update UI with the signed-in user's information val user = auth.currentUser
+                val user = auth.currentUser
+                Log.d(TAG, "signInWithEmail:success" + user?.sendEmailVerification())
+            } else {
+                // If sign in fails, display a message to the user.
+                Log.w(TAG, "signInWithEmail:failure", task.exception)
             }
+        }
     }
 
     fun getCurrentUser() {
