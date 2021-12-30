@@ -1,16 +1,20 @@
-package com.example.retireaqui
+package com.example.retireaqui.views
 
-import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
-import com.example.retireaqui.network.models.User
-import com.example.retireaqui.network.services.UserService
+import com.example.retireaqui.R
+import com.example.retireaqui.network.models.Authentication
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
+    var auth = Firebase.auth
+    var database = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -21,9 +25,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun onRegister(){
-        val editName : EditText = findViewById(R.id.register_name_value)
+        val editName : EditText = findViewById(R.id.login_email_value)
         val editEmail : EditText = findViewById(R.id.register_email_value)
-        val editPassword : EditText = findViewById(R.id.register_password_value)
+        val editPassword : EditText = findViewById(R.id.login_password_value)
 
         val name = editName.getText()
         val email = editEmail.getText()
@@ -31,9 +35,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val btnOnRegister = findViewById<Button>(R.id.register_button)
         btnOnRegister.setOnClickListener{
-            val user = User(name.toString(), email.toString(), password.toString())
-            val userService = UserService()
-            userService.registerUser(user)
+            Authentication.signUp(name.toString(), email.toString(), password.toString(), "gerente")
         }
     }
 }

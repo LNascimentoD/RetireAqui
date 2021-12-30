@@ -1,7 +1,8 @@
 package com.example.retireaqui.network.models
 
-class User (Name: String, Email: String, Password: String) {
+class User (Id: String, Name: String, Email: String, Type: String) {
+    val id = Id
     val name = Name
     val email = Email
-    val password = Password
+    val type = Type
 }
