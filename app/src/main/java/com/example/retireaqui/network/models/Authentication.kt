@@ -17,18 +17,19 @@ object Authentication {
     fun signUp(name: String, email: String, password: String, type: String) {
         auth.createUserWithEmailAndPassword(email, password).
         addOnCompleteListener { task: Task<AuthResult> ->
+            if(task.isSuccessful){
+                val user = User(auth.currentUser?.uid.toString(), name, email, type)
+
+                database.collection("users")
+                    .add(user)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error adding document", e)
+                    }
+            }
         }
-
-        val user = User(auth.currentUser?.uid.toString(), name, email, type)
-
-        database.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(ContentValues.TAG, "Error adding document", e)
-            }
     }
 
     fun signIn(email: String, password: String) {
