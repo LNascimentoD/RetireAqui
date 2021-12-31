@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 object Authentication {
+    // DEPEC
     var auth = Firebase.auth
     var database = Firebase.firestore
 
