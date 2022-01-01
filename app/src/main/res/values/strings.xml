@@ -21,6 +21,7 @@
     <string name="register_button">Cadastrar-se</string>
     <string name="register_button_legend">Já possui conta?</string>
     <string name="register_button_legend_link">Faça seu login</string>
+    <string name="register_type_legend">você é um gerente de estabelecimento?</string>
 
     <string name="list_shop_title">Lojas</string>
     <string name="list_shop_home">home</string>

@@ -1,25 +1,21 @@
 package com.example.retireaqui
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.retireaqui.network.models.Authentication
 import com.example.retireaqui.views.MapActivity
-import com.example.retireaqui.views.ListShopActivity
 import com.example.retireaqui.views.RegisterActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+    var auth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -54,21 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnNavigationRegister: Button = findViewById(R.id.login_button)
         btnNavigationRegister.setOnClickListener{
-            //Authentication.logout()
-
-            Log.d(ContentValues.TAG, "Deu ruim: " + auth.currentUser)
-
-            Authentication.signIn(email.toString(), password.toString())
-
-            Log.d(ContentValues.TAG, "Deu Bom: " + auth.currentUser)
-
-            if(auth.currentUser != null){
-                val activityMap = Intent(this, MapActivity::class.java)
-                startActivity(activityMap)
-
-                //val listShopActivity = Intent(this, ListShopActivity::class.java)
-                //startActivity(listShopActivity)
-            }
+            signIn(email.toString(), password.toString())
         }
     }
 
@@ -77,6 +59,22 @@ class MainActivity : AppCompatActivity() {
         btnNavigationRegister.setOnClickListener{
             val activityRegister = Intent(this, RegisterActivity::class.java)
             startActivity(activityRegister)
+        }
+    }
+
+    private fun signIn(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password).
+        addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val activityMap = Intent(this, MapActivity::class.java)
+                startActivity(activityMap)
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    "${task.exception?.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 }
