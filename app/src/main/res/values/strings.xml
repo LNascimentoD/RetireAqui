@@ -31,4 +31,10 @@
 
     <string name="list_shop_name">Nome do estabelecimento</string>
     <string name="list_shop_location">Localização</string>
+
+    <string name="detail_manager_name">Fulano de tal</string>
+    <string name="detail_call_manager">Falar com o gerente</string>
+    <string name="detail_title">Produtos disponíveis</string>
+    <string name="detail_product_name">Nome do produto</string>
+    <string name="detail_retirada">Agendar retirada</string>
 </resources>

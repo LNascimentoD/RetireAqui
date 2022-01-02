@@ -1,7 +1,9 @@
 package com.example.retireaqui
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
@@ -10,12 +12,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.retireaqui.views.MapActivity
 import com.example.retireaqui.views.RegisterActivity
+import com.example.retireaqui.views.manager_context.ShopDetailActivity
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
     var auth = Firebase.auth
+    var database = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -66,8 +71,23 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password).
         addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val activityMap = Intent(this, MapActivity::class.java)
-                startActivity(activityMap)
+                database.collection("users")
+                    .whereEqualTo("email", auth.currentUser?.email)
+                    .get()
+                    .addOnSuccessListener { result ->
+                        for (document in result) {
+                            if(document.data["type"].toString() == "gerente"){
+                                val activityShopDetail = Intent(this, ShopDetailActivity::class.java)
+                                startActivity(activityShopDetail)
+                            }else{
+                                val activityMap = Intent(this, MapActivity::class.java)
+                                startActivity(activityMap)
+                            }
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.w(TAG, "Error getting documents.", exception)
+                    }
             } else {
                 Toast.makeText(
                     applicationContext,
