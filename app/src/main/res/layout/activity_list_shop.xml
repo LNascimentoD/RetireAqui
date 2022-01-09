@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.ListShopActivity">
+    tools:context=".views.manager_context.ListShopActivity">
 
     <LinearLayout
         android:layout_width="412dp"
@@ -38,186 +38,44 @@
 
             <LinearLayout
                 android:layout_width="343dp"
-                android:layout_height="match_parent"
+                android:layout_height="387dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="35dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:layout_marginBottom="23dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_white"
-                        android:backgroundTint="@color/white"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="21dp"
-                            android:layout_height="21dp"
-                            android:src="@drawable/shop_black" />
-                    </LinearLayout>
+                    android:layout_height="404dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <ListView
+                            android:id="@+id/listView_places"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/list_shop_name"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white"
-                            android:textSize="16sp" />
+                            android:layout_height="336dp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="21dp"
-                                android:layout_height="21dp"
-                                android:src="@drawable/pin" />
-
-                            <TextView
-                                android:id="@+id/textView7"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:layout_weight="1"
-                                android:text="@string/list_shop_location"
-                                android:textColor="@color/white"
-                                android:textColorHint="@color/white" />
-                        </LinearLayout>
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:layout_marginBottom="23dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_white"
-                        android:backgroundTint="@color/white"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="21dp"
-                            android:layout_height="21dp"
-                            android:src="@drawable/shop_black" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/list_shop_name"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white"
-                            android:textSize="16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="21dp"
-                                android:layout_height="21dp"
-                                android:src="@drawable/pin" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:layout_weight="1"
-                                android:text="@string/list_shop_location"
-                                android:textColor="@color/white"
-                                android:textColorHint="@color/white" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:layout_marginBottom="23dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_white"
-                        android:backgroundTint="@color/white"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="21dp"
-                            android:layout_height="21dp"
-                            android:src="@drawable/shop_black" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="15dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView6.1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/list_shop_name"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/white"
-                            android:textSize="16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="21dp"
-                                android:layout_height="21dp"
-                                android:src="@drawable/pin" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:layout_weight="1"
-                                android:text="@string/list_shop_location"
-                                android:textColor="@color/white"
-                                android:textColorHint="@color/white" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
+                </ScrollView>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/add_place_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="42dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="42dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/blue_figma"
+                android:fontFamily="@font/poppins"
+                android:text="@string/add_place_button"
+                android:textColor="@color/black_figma"
+                app:cornerRadius="10dp" />
         </LinearLayout>
 
         <LinearLayout

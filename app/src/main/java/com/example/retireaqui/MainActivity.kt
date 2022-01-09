@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.retireaqui.views.MapActivity
 import com.example.retireaqui.views.RegisterActivity
+import com.example.retireaqui.views.manager_context.CreateProductActivity
+import com.example.retireaqui.views.manager_context.ListShopActivity
 import com.example.retireaqui.views.manager_context.ShopDetailActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -77,8 +79,11 @@ class MainActivity : AppCompatActivity() {
                     .addOnSuccessListener { result ->
                         for (document in result) {
                             if(document.data["type"].toString() == "gerente"){
-                                val activityShopDetail = Intent(this, ShopDetailActivity::class.java)
-                                startActivity(activityShopDetail)
+                                //val activityShopDetail = Intent(this, ShopDetailActivity::class.java)
+                               // startActivity(activityShopDetail)
+
+                                val activityListShop = Intent(this, ListShopActivity::class.java)
+                                startActivity(activityListShop)
                             }else{
                                 val activityMap = Intent(this, MapActivity::class.java)
                                 startActivity(activityMap)

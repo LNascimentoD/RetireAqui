@@ -33,8 +33,26 @@
     <string name="list_shop_location">Localização</string>
 
     <string name="detail_manager_name">Fulano de tal</string>
-    <string name="detail_call_manager">Falar com o gerente</string>
+    <string name="detail_localization">Ver localização</string>
     <string name="detail_title">Produtos disponíveis</string>
     <string name="detail_product_name">Nome do produto</string>
     <string name="detail_retirada">Agendar retirada</string>
+
+    <string name="create_product_title">Cadastrar produtos</string>
+    <string name="create_product_name">name</string>
+    <string name="create_product_email">email do usuário dono do produto</string>
+    <string name="create_product_name_value">Digite o nome do produto</string>
+    <string name="create_product_email_value">Digite o email do usuário</string>
+
+    <string name="create_place_title">Cadastrar estabelecimento</string>
+    <string name="create_place_name">name</string>
+    <string name="create_place_name_value">Digite o nome do estabelecimento</string>
+    <string name="create_lat_place_value">Digite a latitude do estabelecimento</string>
+    <string name="create_lat_place">latitude</string>
+    <string name="create_long_place_value">Digite a longitude do estabelecimento</string>
+    <string name="create_long_place">longitude</string>
+
+    <string name="cadastra_button">Cadastrar</string>
+    <string name="add_product_button">Adicionar produto</string>
+    <string name="add_place_button">Adicionar estabelecimento</string>
 </resources>

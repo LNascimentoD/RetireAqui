@@ -4,37 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.manager_context.ListShopActivity">
+    tools:context=".views.manager_context.CreateProductActivity">
 
     <LinearLayout
-        android:layout_width="417dp"
-        android:layout_height="794dp"
+        android:layout_width="412dp"
+        android:layout_height="735dp"
+        android:background="@color/black_figma"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="663dp">
+            android:layout_height="603dp"
+            android:orientation="vertical">
 
-        </fragment>
+            <TextView
+                android:id="@+id/create_product_title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/create_product_title"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/create_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="52dp"
+                android:paddingBottom="8dp"
+                android:text="@string/create_product_name"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/create_product_name_value"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/my_bg"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/create_product_name_value"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <TextView
+                android:id="@+id/create_product_email_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="8dp"
+                android:text="@string/create_product_email"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/create_product_email_value"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/my_bg"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/create_product_email_value"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <Button
+                android:id="@+id/create_product_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="@color/yellow_figma"
+                android:fontFamily="@font/poppins"
+                android:text="@string/cadastra_button"
+                android:textColor="@color/black_figma"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:background="@color/gray_figma"
             android:backgroundTint="@color/gray_figma"
-            android:gravity="end"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/button_home"
-                android:layout_width="109dp"
+                android:layout_width="102dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
@@ -54,7 +128,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="106dp"
+                android:layout_width="102dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
@@ -112,5 +186,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

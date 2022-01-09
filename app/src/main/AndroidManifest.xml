@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.retireaqui">
+    package="com.example.retireaqui" >
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -10,7 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RetireAqui">
+        android:theme="@style/Theme.RetireAqui" >
+        <activity
+            android:name=".views.manager_context.CreateShopActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.manager_context.CreateProductActivity"
+            android:exported="true" />
         <activity
             android:name=".views.manager_context.ShopDetailActivity"
             android:exported="true" />
@@ -26,14 +32,14 @@
             android:name=".views.MapActivity"
             android:exported="true" />
         <activity
-            android:name=".views.ListShopActivity"
+            android:name=".views.manager_context.ListShopActivity"
             android:exported="true" />
         <activity
             android:name=".views.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
