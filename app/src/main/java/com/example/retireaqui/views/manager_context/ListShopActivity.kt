@@ -9,6 +9,7 @@ import android.view.Window
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.retireaqui.R
 import com.example.retireaqui.network.models.Place
 import com.example.retireaqui.network.models.Product
@@ -26,6 +27,7 @@ class ListShopActivity : AppCompatActivity() {
     var database = Firebase.firestore
 
     lateinit var user: User
+    lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +35,21 @@ class ListShopActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_list_shop)
 
-        //getUserInfo()
-        getPlaces()
+        email = auth.currentUser?.email.toString()
+
+        getUserInfo()
         onClickAddProductButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getUserInfo()
     }
 
     private fun getUserInfo(){
         database.collection("users")
-            .whereEqualTo("email", auth.currentUser?.email)
+            .whereEqualTo("email", email)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -50,9 +59,14 @@ class ListShopActivity : AppCompatActivity() {
                     var type = document.data["type"].toString()
 
                     user = User(id, name, email, type)
+                }
+                val btnNavigationCreateShop: TextView = findViewById(R.id.add_place_button)
 
-                    val user_name: TextView = findViewById(R.id.manager_name)
-                    user_name.setText(user.name)
+                if(user.type == "gerente"){
+                    getPlacesManager()
+                }else{
+                    getPlacesUser()
+                    btnNavigationCreateShop.isVisible = false
                 }
             }
             .addOnFailureListener { exception ->
@@ -60,12 +74,45 @@ class ListShopActivity : AppCompatActivity() {
             }
     }
 
-    private fun getPlaces(){
+    private fun getPlacesManager(){
         val listPlaces : ArrayList<Place> = ArrayList()
         val listPlacesId : ArrayList<String> = ArrayList()
 
         database.collection("places")
             .whereEqualTo("user_email", auth.currentUser?.email)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    var name = document.data["name"].toString()
+                    var user_email = document.data["user_email"].toString()
+                    var location = document.data["location"].toString()
+
+                    val place = Place(name, user_email, location)
+
+                    listPlaces.add(place)
+                    listPlacesId.add(document.id)
+                }
+
+                val adapter = ShopAdapter(this, listPlaces, listPlacesId)
+                val listView: ListView = findViewById(R.id.listView_places)
+                listView.adapter = adapter
+
+                listView.setOnItemClickListener { adapterView, view, itemPosition, l ->
+                    val activityShopDetail = Intent(this, ShopDetailActivity::class.java)
+                    activityShopDetail.putExtra("id", listPlacesId[itemPosition])
+                    startActivity(activityShopDetail)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
+            }
+    }
+
+    private fun getPlacesUser(){
+        val listPlaces : ArrayList<Place> = ArrayList()
+        val listPlacesId : ArrayList<String> = ArrayList()
+
+        database.collection("places")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {

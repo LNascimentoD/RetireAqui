@@ -24,7 +24,6 @@ class ShopAdapter(private val context: Activity, private val arrayList: ArrayLis
 
         val shop = arrayList[position]
         val shopName: TextView = view.findViewById(R.id.shop_name)
-        val shopLocationButton: TextView = view.findViewById(R.id.shop_location)
 
         shopName.text = shop.name
 

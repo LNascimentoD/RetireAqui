@@ -55,4 +55,15 @@
     <string name="cadastra_button">Cadastrar</string>
     <string name="add_product_button">Adicionar produto</string>
     <string name="add_place_button">Adicionar estabelecimento</string>
+
+    <string name="deliver_title_manager">Entregar produto</string>
+    <string name="deliver_warn">Só entregue o produto se o cliente apresentar o seguinte código: </string>
+    <string name="deliver_button">Entregar produto</string>
+
+    <string name="create_schedule_title">Agendar retirada</string>
+    <string name="create_schedule_date_value">data</string>
+    <string name="create_schedule_date">Informe a data de retirada</string>
+    <string name="create_schedule_time_value">hora</string>
+    <string name="create_schedule_time">Informe o horário de retirada</string>
+    <string name="create_schedule_button">Agendar</string>
 </resources>

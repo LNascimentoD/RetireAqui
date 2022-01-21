@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.retireaqui" >
+    package="com.example.retireaqui">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -10,7 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RetireAqui" >
+        android:theme="@style/Theme.RetireAqui">
+        <activity
+            android:name=".views.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.ReceiveProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.ListScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.CreateScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.manager_context.DeliverProductActivity"
+            android:exported="true" />
         <activity
             android:name=".views.manager_context.CreateShopActivity"
             android:exported="true" />
@@ -39,7 +54,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

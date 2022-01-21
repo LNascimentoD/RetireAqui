@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.retireaqui.R
 import com.example.retireaqui.network.models.Place
 import com.example.retireaqui.network.models.Product
@@ -16,6 +17,7 @@ import com.example.retireaqui.network.models.User
 import com.example.retireaqui.views.MapActivity
 import com.example.retireaqui.views.RegisterActivity
 import com.example.retireaqui.views.adapters.ProductsAdapter
+import com.example.retireaqui.views.user_context.CreateScheduleActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,6 +29,7 @@ class ShopDetailActivity : AppCompatActivity() {
     lateinit var user: User
     lateinit var place: Place
     lateinit var id: String
+    lateinit var type: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +37,25 @@ class ShopDetailActivity : AppCompatActivity() {
 
         id = intent.getStringExtra("id").toString()
 
+        database.collection("users")
+            .whereEqualTo("email", auth.currentUser?.email.toString())
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    type = document.data["type"].toString()
+
+                    val btnNavigationCreateShop: TextView = findViewById(R.id.add_product_button)
+
+                    if(type != "gerente"){
+                        btnNavigationCreateShop.isVisible = false
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
+            }
+
         getPlaceInfo()
-        getUserInfo()
         showListView()
         onClickAddProductButton()
         onClickLocalizationNav ()
@@ -66,6 +86,16 @@ class ShopDetailActivity : AppCompatActivity() {
                         "111111 $itemPosition",
                         Toast.LENGTH_LONG
                     ).show()
+
+                    if(type == "gerente"){
+                        val activityDeliverProduct = Intent(this, DeliverProductActivity::class.java)
+                        activityDeliverProduct.putExtra("id", productListId[itemPosition])
+                        startActivity(activityDeliverProduct)
+                    }else{
+                        val activityCreateSchedule = Intent(this, CreateScheduleActivity::class.java)
+                        activityCreateSchedule.putExtra("id", productListId[itemPosition])
+                        startActivity(activityCreateSchedule)
+                    }
                 }
             }
             .addOnFailureListener { exception ->
@@ -75,7 +105,7 @@ class ShopDetailActivity : AppCompatActivity() {
 
     private fun getUserInfo(){
         database.collection("users")
-            .whereEqualTo("email", auth.currentUser?.email)
+            .whereEqualTo("email", place.user_email)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -105,6 +135,8 @@ class ShopDetailActivity : AppCompatActivity() {
                 var location = document.data?.get("location").toString()
 
                 place = Place(name, user_email, location)
+
+                getUserInfo()
             }
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)

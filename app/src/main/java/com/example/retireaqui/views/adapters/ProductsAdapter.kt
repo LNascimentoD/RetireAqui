@@ -17,7 +17,6 @@ class ProductsAdapter(private val context: Activity, private val arrayList: Arra
     : ArrayAdapter<Product>(context, R.layout.list_item_product, arrayList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
         val inflater: LayoutInflater = LayoutInflater.from(context)
         val view: View = inflater.inflate(R.layout.list_item_product, null)
 
