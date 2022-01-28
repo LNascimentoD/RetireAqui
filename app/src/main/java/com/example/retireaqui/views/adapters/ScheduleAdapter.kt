@@ -15,10 +15,14 @@ class ScheduleAdapter(private val context: Activity, private val arrayList: Arra
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         val inflater: LayoutInflater = LayoutInflater.from(context)
-        val view: View = inflater.inflate(R.layout.list_item_shop, null)
+        val view: View = inflater.inflate(R.layout.schedule_item_shop, null)
 
         val schedule = arrayList[position]
-        val scheduleName: TextView = view.findViewById(R.id.shop_name)
+        val scheduleDate: TextView = view.findViewById(R.id.schedule_date)
+        scheduleDate.text = "Data: " + schedule.time
+
+        val scheduleHour: TextView = view.findViewById(R.id.schedule_hour)
+        scheduleHour.text = "Hora: " + schedule.date
 
         return view
     }

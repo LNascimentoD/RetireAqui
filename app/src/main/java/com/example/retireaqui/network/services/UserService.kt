@@ -1,32 +1,34 @@
 package com.example.retireaqui.network.services
 
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.util.Log
 import com.example.retireaqui.network.models.User
-import com.example.retireaqui.network.providers.HashProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class UserService {
-    val db = Firebase.firestore
+    var auth = Firebase.auth
+    var database = Firebase.firestore
 
-    public fun registerUser(user: User){
-        val hashProvider = HashProvider()
+    fun getUser(email: String, setUser: (user: User) -> Unit){
+        database.collection("users")
+            .whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    var id = document.id
+                    var name = document.data["name"].toString()
+                    var email = document.data["email"].toString()
+                    var type = document.data["type"].toString()
 
-        val user = hashMapOf(
-            "name" to user.name,
-            "email" to user.email,
-            "password" to hashProvider.generateHash(user.name),
-            "tipo" to "gerente"
-        )
+                    var user = User(id, name, email, type)
 
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    setUser(user)
+                }
             }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
             }
     }
 }

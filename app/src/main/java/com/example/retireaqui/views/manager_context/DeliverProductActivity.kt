@@ -1,98 +1,86 @@
 package com.example.retireaqui.views.manager_context
 
-import android.content.ContentValues
-import android.content.Intent
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ListView
+import android.view.Window
+import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.retireaqui.R
 import com.example.retireaqui.network.models.Place
 import com.example.retireaqui.network.models.Product
 import com.example.retireaqui.network.models.User
-import com.example.retireaqui.views.adapters.ProductsAdapter
-import com.google.firebase.auth.ktx.auth
+import com.example.retireaqui.network.services.ProductService
+import com.example.retireaqui.network.services.ScheduleService
+import com.example.retireaqui.network.services.UserService
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class DeliverProductActivity : AppCompatActivity() {
     var database = Firebase.firestore
-
-    lateinit var user: User
-    lateinit var place: Place
-    lateinit var product: Product
+    val productService = ProductService()
+    val userService = UserService()
+    val scheduleService = ScheduleService()
 
     lateinit var id_product: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_deliver_product)
 
         id_product = intent.getStringExtra("id").toString()
 
-        database.collection("schedule")
-            .whereEqualTo("product_id", id_product)
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    getUser(document.data["user_email"].toString())
-                    getPlace(document.data["place_id"].toString())
-                    getProduct(document.data["product_id"].toString())
 
-                    val deliver_cod: TextView = findViewById(R.id.deliver_cod)
-                    deliver_cod.setText(document.id)
+        val deliver_info: TextView = findViewById(R.id.deliver_info)
+        deliver_info.isVisible = false
 
-                    val time_label: TextView = findViewById(R.id.time_label)
-                    time_label.setText("O tempo de entrega é: " + document.data["time"].toString())
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents.", exception)
-            }
+
+        val product_cod: TextView = findViewById(R.id.product_cod)
+        product_cod.isVisible = false
+
+        scheduleService.getScheduleByProductId(id_product) { id, schedule ->
+            getUser(schedule.user_email)
+            getProduct(schedule.product_id)
+
+            val deliver_cod: TextView = findViewById(R.id.deliver_cod)
+            deliver_cod.setText(id)
+
+            val time_label: TextView = findViewById(R.id.time_label)
+            time_label.setText("O tempo de entrega é: " + schedule.time + schedule.date)
+        }
+
+        onClickDeliver()
     }
 
     private fun getUser(email: String){
-        database.collection("users")
-            .whereEqualTo("email", email)
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    var id = document.id
-                    var name = document.data["name"].toString()
-                    var email = document.data["email"].toString()
-                    var type = document.data["type"].toString()
-
-                    user = User(id, name, email, type)
-
-                    val user_name: TextView = findViewById(R.id.user_name_label)
-                    user_name.setText("Dono do produto: " + user.name)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents.", exception)
-            }
+        userService.getUser(email){ user ->
+            val user_name: TextView = findViewById(R.id.user_name_label)
+            user_name.setText("Dono do produto: " + user.name)
+        }
     }
 
-    private fun getPlace(id: String){}
-
     private fun getProduct(id: String){
-        database.collection("products")
-            .document(id)
-            .get()
-            .addOnSuccessListener { document ->
-                var name = document.data?.get("name").toString()
-                var user_email = document.data?.get("user_email").toString()
-                var place_id = document.data?.get("location").toString()
+        productService.getProductById(id) {product ->
+            val product_name: TextView = findViewById(R.id.product_name_label)
+            product_name.setText("O nome do produto: " + product.name)
+        }
+    }
 
-                product = Product(name, user_email, place_id)
+    private fun onClickDeliver(){
+        val btnOnDate = findViewById<Button>(R.id.button_deliver)
 
-                val product_name: TextView = findViewById(R.id.product_name_label)
-                product_name.setText("O nome do produto: " + product.name)
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents.", exception)
-            }
+        btnOnDate.setOnClickListener{
+            val deliver_info: TextView = findViewById(R.id.deliver_info)
+            deliver_info.isVisible = true
+
+
+            val product_cod: TextView = findViewById(R.id.product_cod)
+            product_cod.setText("Código do produto: " + id_product)
+            product_cod.isVisible = true
+        }
     }
 }

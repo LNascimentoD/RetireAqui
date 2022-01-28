@@ -4,19 +4,18 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import android.widget.*
 import com.example.retireaqui.R
-import com.example.retireaqui.network.models.Place
-import com.example.retireaqui.network.models.Product
 import com.example.retireaqui.network.models.Schedule
+import com.example.retireaqui.network.services.ScheduleService
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class CreateScheduleActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    var database = Firebase.firestore
     var auth = Firebase.auth
+    val scheduleService = ScheduleService()
 
     lateinit var id: String
 
@@ -34,6 +33,9 @@ class CreateScheduleActivity : AppCompatActivity(), DatePickerDialog.OnDateSetLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_create_schedule)
 
         id = intent.getStringExtra("id").toString()
@@ -82,22 +84,21 @@ class CreateScheduleActivity : AppCompatActivity(), DatePickerDialog.OnDateSetLi
     private fun createSchedule(user_email: String, product_id: String){
         val schedule = Schedule("$savedDay/$savedMonth/$savedYear", "$savedHour:$savedMinute", user_email, product_id)
 
-        database.collection("schedule")
-            .add(schedule)
-            .addOnSuccessListener { documentReference ->
+        scheduleService.createSchedule(schedule) { result ->
+            if(result){
                 Toast.makeText(
                     applicationContext,
                     "Deu bom",
                     Toast.LENGTH_LONG
                 ).show()
-            }
-            .addOnFailureListener { e ->
+            }else{
                 Toast.makeText(
                     applicationContext,
                     "Não foi possível persistir os dados do produto",
                     Toast.LENGTH_LONG
                 ).show()
             }
+        }
     }
 
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {

@@ -1,16 +1,13 @@
 package com.example.retireaqui.views
 
 import android.content.ContentValues
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.Button
 import com.example.retireaqui.R
-import com.example.retireaqui.network.models.Authentication
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -27,15 +24,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_map)
 
         lat = intent.getStringExtra("lat").toString()
         long = intent.getStringExtra("long").toString()
 
-        // calling the action bar
         var actionBar = getSupportActionBar()
 
-        // showing the back button in action bar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
@@ -43,8 +40,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        testeBtn()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -60,19 +55,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
         val sydney = LatLng(lat.toDouble(), long.toDouble())
         mMap.addMarker(
             MarkerOptions()
             .position(sydney)
             .title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
-
-    fun testeBtn(){
-        val btnHome: View = findViewById(R.id.button_home)
-        btnHome.setOnClickListener{
-            Log.w(ContentValues.TAG, "HOME")
-        }
     }
 }

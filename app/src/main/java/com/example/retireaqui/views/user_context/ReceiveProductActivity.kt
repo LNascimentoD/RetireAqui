@@ -1,47 +1,52 @@
 package com.example.retireaqui.views.user_context
 
-import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
+import androidx.core.view.isVisible
 import com.example.retireaqui.R
-import com.example.retireaqui.network.models.Place
-import com.example.retireaqui.network.models.Schedule
-import com.example.retireaqui.network.models.User
+import com.example.retireaqui.network.services.ProductService
+import com.example.retireaqui.network.services.ScheduleService
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class ReceiveProductActivity : AppCompatActivity() {
     var auth = Firebase.auth
-    var database = Firebase.firestore
+    val scheduleService = ScheduleService()
+    val productService = ProductService()
 
-    lateinit var place: Place
     lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_receive_product)
 
         id = intent.getStringExtra("id").toString()
 
-        getScheduleInfo()
+        onClickReceive()
     }
 
-    private fun getScheduleInfo(){
-        database.collection("schedule")
-            .document(id)
-            .get()
-            .addOnSuccessListener { document ->
-                var time = document.data?.get("time").toString()
-                var date = document.data?.get("date").toString()
-                var user_email = document.data?.get("user_email").toString()
-                var product_id = document.data?.get("product_id").toString()
+    private fun onClickReceive(){
+        val btnOnDate = findViewById<Button>(R.id.receive_button)
 
-                val schedule = Schedule(time, date, user_email, product_id)
+        btnOnDate.setOnClickListener{
+            scheduleService.getScheduleById(id) { schedule ->
+                productService.deleteProductById(schedule.product_id) { result ->
+                    if(result){
+                        scheduleService.deleteScheduleById(id) { result ->
+                            if (result){
+
+                            }
+                        }
+                    }
+                }
             }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents.", exception)
-            }
+        }
     }
 }
