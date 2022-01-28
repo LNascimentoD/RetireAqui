@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.manager_context.DeliverProductActivity">
+
+    <LinearLayout
+        android:layout_width="416dp"
+        android:layout_height="732dp"
+        android:background="@color/black_figma"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="606dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/deliver_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/user_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/product_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/time_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/deliver_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_warn"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/deliver_cod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/yellow_figma"
+                android:textColorHint="@color/white"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_deliver"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="42dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="42dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/blue_figma"
+                android:fontFamily="@font/poppins"
+                android:text="@string/deliver_button"
+                android:textColor="@color/black_figma"
+                app:cornerRadius="10dp" />
+
+            <TextView
+                android:id="@+id/deliver_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_info"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/product_cod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="@string/deliver_title_manager"
+                android:textColor="@color/yellow_figma"
+                android:textColorHint="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,37 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.manager_context.ListShopActivity">
+    tools:context=".views.user_context.ListScheduleActivity">
 
     <LinearLayout
-        android:layout_width="412dp"
-        android:layout_height="732dp"
+        android:layout_width="416dp"
+        android:layout_height="735dp"
         android:background="@color/black_figma"
-        android:backgroundTint="@color/black_figma"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="603dp"
+            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="342dp"
+                android:id="@+id/create_schedule_title_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="48dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/list_shop_title"
+                android:text="@string/create_schedule_title"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textSize="32sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="404dp">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -63,20 +63,8 @@
                 </ScrollView>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/add_place_button"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginLeft="42dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="42dp"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="@color/blue_figma"
-                android:fontFamily="@font/poppins"
-                android:text="@string/add_place_button"
-                android:textColor="@color/black_figma"
-                app:cornerRadius="10dp" />
         </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

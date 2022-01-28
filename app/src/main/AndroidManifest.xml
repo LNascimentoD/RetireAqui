@@ -12,6 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RetireAqui">
         <activity
+            android:name=".views.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.ReceiveProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.ListScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.user_context.CreateScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.manager_context.DeliverProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.manager_context.CreateShopActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.manager_context.CreateProductActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.manager_context.ShopDetailActivity"
             android:exported="true" />
 
@@ -26,7 +47,7 @@
             android:name=".views.MapActivity"
             android:exported="true" />
         <activity
-            android:name=".views.ListShopActivity"
+            android:name=".views.manager_context.ListShopActivity"
             android:exported="true" />
         <activity
             android:name=".views.RegisterActivity"

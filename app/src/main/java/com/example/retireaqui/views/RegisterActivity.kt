@@ -9,15 +9,12 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.example.retireaqui.R
-import com.example.retireaqui.network.models.User
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.ktx.auth
+import com.example.retireaqui.network.services.AuthService
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
-    var auth = Firebase.auth
+    var auth = AuthService()
     var database = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,38 +39,31 @@ class RegisterActivity : AppCompatActivity() {
         val btnOnRegister = findViewById<Button>(R.id.register_button)
         btnOnRegister.setOnClickListener {
             if(editType.isChecked){
-                signUp(name.toString(), email.toString(), password.toString(), "gerente")
-            }else{
-                signUp(name.toString(), email.toString(), password.toString(), "cliente")
-            }
-        }
-    }
-
-    private fun signUp(name: String, email: String, password: String, type: String) {
-        auth.createUserWithEmailAndPassword(email, password).
-        addOnCompleteListener { task: Task<AuthResult> ->
-            if(task.isSuccessful){
-                val user = User(auth.currentUser?.uid.toString(), name, email, type)
-
-                database.collection("users")
-                    .add(user)
-                    .addOnSuccessListener { documentReference ->
-                        val activityMap = Intent(this, MapActivity::class.java)
-                        startActivity(activityMap)
-                    }
-                    .addOnFailureListener { e ->
+                auth.signUp(name.toString(), email.toString(), password.toString(), "gerente") { result ->
+                    if(result){
+                        val activityHome = Intent(this, HomeActivity::class.java)
+                        startActivity(activityHome)
+                    } else {
                         Toast.makeText(
                             applicationContext,
-                            "Não foi possível persistir os dados do usuário",
+                            "deu ruim",
                             Toast.LENGTH_LONG
                         ).show()
                     }
+                }
             }else{
-                Toast.makeText(
-                    applicationContext,
-                    "${task.exception?.message}",
-                    Toast.LENGTH_LONG
-                ).show()
+                auth.signUp(name.toString(), email.toString(), password.toString(), "cliente") { result ->
+                    if(result){
+                        val activityHome = Intent(this, HomeActivity::class.java)
+                        startActivity(activityHome)
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "deu ruim",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
             }
         }
     }

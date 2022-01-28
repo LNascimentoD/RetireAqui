@@ -24,17 +24,47 @@
     <string name="register_type_legend">você é um gerente de estabelecimento?</string>
 
     <string name="list_shop_title">Lojas</string>
-    <string name="list_shop_home">home</string>
+    <string name="list_shop_home">mapa</string>
     <string name="list_shop_lojas">lojas</string>
     <string name="list_shop_chat">chat</string>
-    <string name="list_shop_perfil">perfil</string>
+    <string name="list_shop_perfil">agenda</string>
 
     <string name="list_shop_name">Nome do estabelecimento</string>
     <string name="list_shop_location">Localização</string>
 
     <string name="detail_manager_name">Fulano de tal</string>
-    <string name="detail_call_manager">Falar com o gerente</string>
+    <string name="detail_localization">Ver localização</string>
     <string name="detail_title">Produtos disponíveis</string>
     <string name="detail_product_name">Nome do produto</string>
     <string name="detail_retirada">Agendar retirada</string>
+
+    <string name="create_product_title">Cadastrar produtos</string>
+    <string name="create_product_name">name</string>
+    <string name="create_product_email">email do usuário dono do produto</string>
+    <string name="create_product_name_value">Digite o nome do produto</string>
+    <string name="create_product_email_value">Digite o email do usuário</string>
+
+    <string name="create_place_title">Cadastrar estabelecimento</string>
+    <string name="create_place_name">name</string>
+    <string name="create_place_name_value">Digite o nome do estabelecimento</string>
+    <string name="create_lat_place_value">Digite a latitude do estabelecimento</string>
+    <string name="create_lat_place">latitude</string>
+    <string name="create_long_place_value">Digite a longitude do estabelecimento</string>
+    <string name="create_long_place">longitude</string>
+
+    <string name="cadastra_button">Cadastrar</string>
+    <string name="add_product_button">Adicionar produto</string>
+    <string name="add_place_button">Adicionar estabelecimento</string>
+
+    <string name="deliver_title_manager">Entregar produto</string>
+    <string name="deliver_warn">Só entregue o produto se o cliente apresentar o seguinte código: </string>
+    <string name="deliver_button">Entregar produto</string>
+    <string name="deliver_info">Forneça esse identificador para o cliente: </string>
+
+    <string name="create_schedule_title">Agendar retirada</string>
+    <string name="create_schedule_date_value">data</string>
+    <string name="create_schedule_date">Informe a data de retirada</string>
+    <string name="create_schedule_time_value">hora</string>
+    <string name="create_schedule_time">Informe o horário de retirada</string>
+    <string name="create_schedule_button">Agendar</string>
 </resources>
