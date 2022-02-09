@@ -1,29 +1,26 @@
 package com.example.retireaqui.views.manager_context
 
-import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.example.retireaqui.R
-import com.example.retireaqui.network.models.Place
-import com.example.retireaqui.network.models.Product
-import com.example.retireaqui.network.models.User
 import com.example.retireaqui.network.services.ProductService
 import com.example.retireaqui.network.services.ScheduleService
 import com.example.retireaqui.network.services.UserService
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class DeliverProductActivity : AppCompatActivity() {
-    var database = Firebase.firestore
     val productService = ProductService()
     val userService = UserService()
     val scheduleService = ScheduleService()
 
     lateinit var id_product: String
+    lateinit var number: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,10 +51,12 @@ class DeliverProductActivity : AppCompatActivity() {
         }
 
         onClickDeliver()
+        onClickToChat()
     }
 
     private fun getUser(email: String){
         userService.getUser(email){ user ->
+            number = user.number
             val user_name: TextView = findViewById(R.id.user_name_label)
             user_name.setText("Dono do produto: " + user.name)
         }
@@ -77,10 +76,20 @@ class DeliverProductActivity : AppCompatActivity() {
             val deliver_info: TextView = findViewById(R.id.deliver_info)
             deliver_info.isVisible = true
 
-
             val product_cod: TextView = findViewById(R.id.product_cod)
             product_cod.setText("Código do produto: " + id_product)
             product_cod.isVisible = true
+        }
+    }
+
+    private fun onClickToChat(){
+        val btnToChat: View = findViewById(R.id.user_contact)
+
+        btnToChat.setOnClickListener{
+            val url = "https://api.whatsapp.com/send?phone=${number}"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
         }
     }
 }

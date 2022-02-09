@@ -14,6 +14,8 @@
     <string name="register_desc">Facilitamos a retirada do seu produto.</string>
     <string name="register_name">nome</string>
     <string name="register_name_value">Digite seu nome</string>
+    <string name="register_number">número</string>
+    <string name="register_number_value">Digite o seu número</string>
     <string name="register_email">email</string>
     <string name="register_email_value">Digite seu email</string>
     <string name="register_password">senha</string>

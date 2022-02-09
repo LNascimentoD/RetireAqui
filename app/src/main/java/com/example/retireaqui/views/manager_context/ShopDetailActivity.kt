@@ -20,6 +20,8 @@ import com.example.retireaqui.views.adapters.ProductsAdapter
 import com.example.retireaqui.views.user_context.CreateScheduleActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import android.net.Uri
+import android.view.View
 
 class ShopDetailActivity : AppCompatActivity() {
     var auth = Firebase.auth
@@ -31,6 +33,7 @@ class ShopDetailActivity : AppCompatActivity() {
     lateinit var place: Place
     lateinit var id: String
     lateinit var type: String
+    lateinit var number: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +48,14 @@ class ShopDetailActivity : AppCompatActivity() {
             val btnNavigationCreateShop: TextView = findViewById(R.id.add_product_button)
 
             type = user.type
+            number = user.number
 
             if(type == "gerente"){
                 showListViewManager()
             }else{
                 btnNavigationCreateShop.isVisible = false
                 showListViewClient()
+                onClickToChat()
             }
         }
 
@@ -130,11 +135,23 @@ class ShopDetailActivity : AppCompatActivity() {
         btnNavigationCreateShop.setOnClickListener{
             locationService.getLocation(place.location) { lat, long ->
                 val activityMap = Intent(this, MapActivity::class.java)
+                activityMap.putExtra("name", place.name)
                 activityMap.putExtra("lat", lat)
                 activityMap.putExtra("long", long)
 
                 startActivity(activityMap)
             }
+        }
+    }
+
+    private fun onClickToChat(){
+        val btnToChat: View = findViewById(R.id.contact)
+
+        btnToChat.setOnClickListener{
+            val url = "https://api.whatsapp.com/send?phone=${number}"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
         }
     }
 }
