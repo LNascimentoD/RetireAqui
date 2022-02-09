@@ -13,7 +13,7 @@ class ShopService {
     var database = Firebase.firestore
 
     fun createPlace(name: String, email: String, lat: String, long: String, setResult: (result: Boolean) -> Unit){
-        createLocation(lat, long) { idLocation ->
+        createLocation(name, lat, long) { idLocation ->
             val place = Place(name, email, idLocation)
 
             database.collection("places")
@@ -27,8 +27,8 @@ class ShopService {
         }
     }
 
-    fun createLocation(lat: String, long: String, setIdLocation: (result: String) -> Unit){
-        val location = Location(lat, long)
+    fun createLocation(name: String, lat: String, long: String, setIdLocation: (result: String) -> Unit){
+        val location = Location(name, lat, long)
 
         database.collection("location")
             .add(location)

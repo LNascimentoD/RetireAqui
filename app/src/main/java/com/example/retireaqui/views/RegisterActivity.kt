@@ -29,17 +29,19 @@ class RegisterActivity : AppCompatActivity() {
     private fun onRegister() {
         val editName: EditText = findViewById(R.id.login_email_value)
         val editEmail: EditText = findViewById(R.id.register_email_value)
+        val editNumber: EditText = findViewById(R.id.register_email_value)
         val editPassword: EditText = findViewById(R.id.login_password_value)
         val editType: CheckBox = findViewById(R.id.register_type_checkbox)
 
         val name = editName.getText()
         val email = editEmail.getText()
         val password = editPassword.getText()
+        val number = editNumber.getText()
 
         val btnOnRegister = findViewById<Button>(R.id.register_button)
         btnOnRegister.setOnClickListener {
             if(editType.isChecked){
-                auth.signUp(name.toString(), email.toString(), password.toString(), "gerente") { result ->
+                auth.signUp(name.toString(), number.toString(), email.toString(), password.toString(), "gerente") { result ->
                     if(result){
                         val activityHome = Intent(this, HomeActivity::class.java)
                         startActivity(activityHome)
@@ -52,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             }else{
-                auth.signUp(name.toString(), email.toString(), password.toString(), "cliente") { result ->
+                auth.signUp(name.toString(), number.toString(), email.toString(), password.toString(), "cliente") { result ->
                     if(result){
                         val activityHome = Intent(this, HomeActivity::class.java)
                         startActivity(activityHome)

@@ -19,10 +19,11 @@ class UserService {
                 for (document in result) {
                     var id = document.id
                     var name = document.data["name"].toString()
+                    var number = document.data["number"].toString()
                     var email = document.data["email"].toString()
                     var type = document.data["type"].toString()
 
-                    var user = User(id, name, email, type)
+                    var user = User(id, name, number, email, type)
 
                     setUser(user)
                 }

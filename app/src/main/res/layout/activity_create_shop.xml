@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="603dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
       <TextView
@@ -60,63 +60,33 @@
           android:textColorHint="@color/white" />
 
       <TextView
-          android:id="@+id/create_place_lat"
+          android:id="@+id/create_place_location"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginLeft="30dp"
           android:layout_marginTop="10dp"
           android:paddingBottom="8dp"
-          android:text="@string/create_lat_place"
+          android:text="localização"
           android:textColor="@color/white"
           android:textSize="16sp" />
 
-      <EditText
-          android:id="@+id/create_place_lat_value"
+      <fragment
+          android:id="@+id/map_shop"
+          android:name="com.google.android.gms.maps.SupportMapFragment"
           android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:layout_marginLeft="30dp"
-          android:layout_marginRight="30dp"
-          android:background="@drawable/my_bg"
-          android:ems="10"
-          android:fontFamily="@font/poppins"
-          android:hint="@string/create_lat_place_value"
-          android:inputType="textEmailAddress"
-          android:paddingLeft="20dp"
-          android:textColor="@color/white"
-          android:textColorHint="@color/white" />
-
-      <TextView
-          android:id="@+id/create_place_long"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_height="186dp"
           android:layout_marginLeft="30dp"
           android:layout_marginTop="10dp"
-          android:paddingBottom="8dp"
-          android:text="@string/create_long_place"
-          android:textColor="@color/white"
-          android:textSize="16sp" />
+          android:layout_marginRight="30dp">
 
-      <EditText
-          android:id="@+id/create_place_long_value"
-          android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:layout_marginLeft="30dp"
-          android:layout_marginRight="30dp"
-          android:background="@drawable/my_bg"
-          android:ems="10"
-          android:fontFamily="@font/poppins"
-          android:hint="@string/create_long_place_value"
-          android:inputType="textEmailAddress"
-          android:paddingLeft="20dp"
-          android:textColor="@color/white"
-          android:textColorHint="@color/white" />
+      </fragment>
 
       <Button
           android:id="@+id/create_place_button"
           android:layout_width="match_parent"
           android:layout_height="56dp"
-          android:layout_marginTop="10dp"
           android:layout_marginLeft="30dp"
+          android:layout_marginTop="10dp"
           android:layout_marginRight="30dp"
           android:backgroundTint="@color/yellow_figma"
           android:fontFamily="@font/poppins"

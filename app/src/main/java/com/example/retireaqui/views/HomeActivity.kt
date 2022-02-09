@@ -1,6 +1,7 @@
 package com.example.retireaqui.views
 
 import android.content.Intent
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,8 @@ import com.example.retireaqui.network.services.AuthService
 import com.example.retireaqui.network.services.UserService
 import com.example.retireaqui.views.manager_context.ListShopActivity
 import com.example.retireaqui.views.user_context.ListScheduleActivity
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -26,12 +29,16 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var email: String
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
         setContentView(R.layout.activity_home)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         email = auth.currentUser?.email.toString()
 
@@ -56,17 +63,17 @@ class HomeActivity : AppCompatActivity() {
 
     private fun toMap(){
         val btnNavigationToMap: View = findViewById(R.id.to_map)
-        btnNavigationToMap.setOnClickListener{
+        btnNavigationToMap.setOnClickListener {
             val activityMap = Intent(this, MapActivity::class.java)
 
-            activityMap.putExtra("lat", "100.0")
-            activityMap.putExtra("long", "100.0")
+            activityMap.putExtra("lat", "")
+            activityMap.putExtra("long", "")
 
             startActivity(activityMap)
         }
     }
 
-    private fun toShop(){
+    fun toShop(){
         val btnNavigationToMap: View = findViewById(R.id.to_shop)
         btnNavigationToMap.setOnClickListener{
             val activityListShop = Intent(this, ListShopActivity::class.java)
@@ -75,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun toSchedule(){
+    fun toSchedule(){
         val btnNavigationToMap: View = findViewById(R.id.to_schedule)
         btnNavigationToMap.setOnClickListener{
             val activityListSchedule = Intent(this, ListScheduleActivity::class.java)
@@ -84,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun logoff(){
+    fun logoff(){
         val btnNavigationToMap: View = findViewById(R.id.logoff_button)
         btnNavigationToMap.setOnClickListener{
             authService.logout()

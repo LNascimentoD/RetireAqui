@@ -93,6 +93,18 @@
                 android:textColorHint="@color/white"
                 android:textSize="24sp" />
 
+            <TextView
+                android:id="@+id/user_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingLeft="32dp"
+                android:text="Entre em contato"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/button_deliver"
                 android:layout_width="match_parent"

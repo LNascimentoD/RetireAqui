@@ -20,11 +20,11 @@ class AuthService {
         }
     }
 
-    fun signUp(name: String, email: String, password: String, type: String, setResult: (result: Boolean) -> Unit) {
+    fun signUp(name: String, number: String, email: String, password: String, type: String, setResult: (result: Boolean) -> Unit) {
         auth.createUserWithEmailAndPassword(email, password).
         addOnCompleteListener { task: Task<AuthResult> ->
             if(task.isSuccessful){
-                val user = User(auth.currentUser?.uid.toString(), name, email, type)
+                val user = User(auth.currentUser?.uid.toString(), name, number, email, type)
 
                 database.collection("users")
                     .add(user)

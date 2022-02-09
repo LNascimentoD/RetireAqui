@@ -16,7 +16,6 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     var auth = AuthService()
-    var database = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
-
     }
 
     private fun onClickLoginButton (){

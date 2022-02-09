@@ -25,6 +25,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="42dp"
@@ -43,6 +44,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="9dp"
                     android:text="@string/detail_manager_name"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/manager_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:text=" entre em contato"
                     android:textColor="@color/white" />
 
             </LinearLayout>
